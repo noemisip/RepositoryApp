@@ -20,8 +20,10 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SearchField( searchField: String, onValueChanged: (String) -> Unit,
-                 onClick: ()-> Unit ) {
+fun SearchField(
+    searchField: String, onValueChanged: (String) -> Unit,
+    onClick: () -> Unit
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()

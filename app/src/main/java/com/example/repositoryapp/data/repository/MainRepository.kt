@@ -1,6 +1,5 @@
-package com.example.repositoryapp.data
+package com.example.repositoryapp.data.repository
 
-import com.example.repositoryapp.data.model.Repository
 import com.example.repositoryapp.data.model.ResponseBody
 import com.example.repositoryapp.data.service.ApiService
 import kotlinx.coroutines.Dispatchers
@@ -15,6 +14,5 @@ constructor(private val apiService: ApiService){
     fun getRepos(q : String): Flow<ResponseBody> = flow {
         emit(apiService.getRepositories(q))
     }.flowOn(Dispatchers.IO)
-
 
 }

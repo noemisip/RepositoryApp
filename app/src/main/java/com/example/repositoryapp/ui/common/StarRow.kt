@@ -1,4 +1,4 @@
-package com.example.repositoryapp.utils
+package com.example.repositoryapp.ui.common
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -16,17 +16,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun StarRow ( string: String){
-    Row (
+fun StarRow(string: String) {
+    Row(
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(string,
-            fontSize = 18.sp)
+        Text(
+            string,
+        )
         Spacer(Modifier.width(4.dp))
         Icon(
             imageVector = Icons.Default.Star,
             contentDescription = null,
-            tint =  MaterialTheme.colorScheme.primary,
+            tint = MaterialTheme.colorScheme.primary,
             modifier = Modifier.size(18.dp)
         )
     }
