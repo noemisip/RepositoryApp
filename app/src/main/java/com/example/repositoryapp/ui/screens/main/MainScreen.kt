@@ -1,6 +1,5 @@
 package com.example.repositoryapp.ui.screens.main
 
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,13 +9,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -28,8 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.repositoryapp.utils.ApiState
 import com.example.repositoryapp.viewmodel.RepositoryViewModel
-import com.example.repositoryapp.data.model.Owner
 import com.example.repositoryapp.data.model.Repository
+import com.example.repositoryapp.ui.screens.main.components.MainHeader
 import com.example.repositoryapp.ui.screens.main.components.RepoItem
 import com.example.repositoryapp.ui.screens.main.components.SearchField
 import com.example.repositoryapp.ui.screens.main.components.StateContainer
@@ -43,7 +38,7 @@ fun MainScreen(viewModel: RepositoryViewModel, navController: NavHostController)
     var searchField by remember { mutableStateOf("") }
 
     Scaffold(
-        topBar = { MyMainAppBar() }
+        topBar = { MainHeader() }
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -112,19 +107,5 @@ fun MainScreen(viewModel: RepositoryViewModel, navController: NavHostController)
             }
         }
     }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MyMainAppBar() {
-    CenterAlignedTopAppBar(
-        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primary,
-            titleContentColor = MaterialTheme.colorScheme.primaryContainer,
-        ),
-        title = {
-            Text("Repositories")
-        },
-    )
 }
 

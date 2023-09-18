@@ -49,9 +49,8 @@ fun UserContainer( repo: Repository) {
             ) {
                 AsyncImage(
                     model = repo.owner?.avatar,
-                    contentDescription = "User avatar",
+                    contentDescription = null,
                 )
-
             }
             Spacer(Modifier.width(25.dp))
             Column(

@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -15,33 +14,27 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.repositoryapp.data.model.Repository
-import com.example.repositoryapp.ui.common.StarRow
 import com.example.repositoryapp.ui.screens.details.components.DetailsHeader
+import com.example.repositoryapp.ui.screens.details.components.ScrollableContent
 import com.example.repositoryapp.ui.screens.details.components.UserContainer
-import com.example.repositoryapp.utils.replaceDTZ
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailsScreen(navController: NavHostController, repo: Repository) {
 
-    var appBarSize by remember { mutableStateOf(0.dp) }
+    val appBarSize by remember { mutableStateOf(0.dp) }
     val appBarHeightPx = with(LocalDensity.current) { appBarSize }
 
     Scaffold(
@@ -73,43 +66,6 @@ fun DetailsScreen(navController: NavHostController, repo: Repository) {
                     }
                 }
             }
-        }
-
-    }
-}
-
-@Composable
-fun ScrollableContent(repo: Repository) {
-    Text(
-        repo.name.toString(), fontSize = 25.sp,
-        modifier = Modifier.padding(horizontal = 15.dp)
-    )
-    Spacer(Modifier.height(10.dp))
-    Text(
-        repo.desc.toString(),
-        textAlign = TextAlign.Start,
-        modifier = Modifier.padding(horizontal = 15.dp)
-    )
-    Spacer(Modifier.height(20.dp))
-    Column(
-        Modifier
-            .padding(start = 15.dp)
-    ) {
-        Row {
-            Text("Forks: ", fontWeight = FontWeight.SemiBold)
-            Text(repo.forks.toString())
-        }
-        Row {
-            Text("Stars: ", fontWeight = FontWeight.SemiBold)
-            StarRow(string = repo.stars.toString())
-        }
-        Row {
-            Text("Created: ", fontWeight = FontWeight.SemiBold)
-            Text(replaceDTZ(repo.created.toString(), " "))
-        }
-        Row {
-            Text("Last updated: ", fontWeight = FontWeight.SemiBold)
-            Text(replaceDTZ(repo.updated.toString(), " "))
         }
     }
 }
